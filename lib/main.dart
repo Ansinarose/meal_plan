@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Health Meal',
+      title: 'Meal Planner',
       theme: ThemeData(
        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),

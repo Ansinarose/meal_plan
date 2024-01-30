@@ -29,11 +29,13 @@ class _screencalenderState extends State<ScreenCalender> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 250, 226, 6),
         leading: IconButton(onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> ScreenCarousel()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> ScreenCarousel()));
        }, icon: Icon( Icons.arrow_back)),
         actions: [IconButton(onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ScreenRecipe()));
-        }, icon: Icon(Icons.add)),
+        }, icon: Tooltip(
+          message: 'Add recipe',
+          child: Icon(Icons.add),)),
         Padding(
           padding: const EdgeInsets.only(left:10.0),
           child: PopupMenuButton(
@@ -187,22 +189,19 @@ class _screencalenderState extends State<ScreenCalender> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      try{
+                       if (noteController.text.isNotEmpty){
                        await DatabaseHelper.instance.insertFeedback(
-                        today.toLocal().toString(),  // Convert to local time if needed
-                        [noteController.text],  // Assuming a list of notes
+                        today.toLocal().toString(),
+                        [noteController.text],  
                       );
                       setState(() {
                         notes[today] ??= [];
                         notes[today]?.add(noteController.text);
                       });
-                      Navigator.of(context).pop();
-                      } catch(e){
-                        print('Error inserting feedback: $e');}
-                     },
+                       }
+                      Navigator.of(context).pop(); },
                     child: Text('Save',
-                    style: TextStyle(color: Colors.black),),),
-                ],
+                    style: TextStyle(color: Colors.black),),),],
               ),
             ],
           ),

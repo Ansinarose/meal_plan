@@ -62,7 +62,7 @@ class _ScreenEditRecipeState extends State<ScreenEditRecipe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(title:Text('EDIT RECIPE',style: TextStyle(fontSize: 20 ),),centerTitle: true,
         backgroundColor: Color.fromARGB(255, 250, 226, 6),
       ),
        body: SingleChildScrollView(
@@ -189,7 +189,7 @@ class _ScreenEditRecipeState extends State<ScreenEditRecipe> {
                             imageController.text = '';
                           });
                         },
-                        icon: Icon(Icons.cancel, color: Colors.black),
+                        icon: Icon(Icons.edit, color:  Color.fromARGB(255, 250, 226, 6),size: 35,),
                       ),
                     ),
                   ],

@@ -6,15 +6,13 @@ import 'package:meal_plan/Hive_Database/RecipeModel.dart';
 import 'package:meal_plan/Hive_Database/addRecipe.dart';
 import 'package:meal_plan/Hive_Database/box.dart';
 import 'package:meal_plan/Hive_Database/editRecipe.dart';
+import 'package:meal_plan/Hive_Database/search.dart';
 import 'package:meal_plan/Hive_Database/recipeDetails.dart';
-
 class ScreenRecipe extends StatefulWidget {
   const ScreenRecipe({Key? key}) : super(key: key);
-
-  @override
+ @override
   State<ScreenRecipe> createState() => _ScreenRecipeState();
 }
-
 class _ScreenRecipeState extends State<ScreenRecipe> {
    String? category;
   File? image;
@@ -25,41 +23,41 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController nutritionController = TextEditingController();
   TextEditingController imageController = TextEditingController();
-
+  List<RecipeModel> allRecipes = [];
   late ValueNotifier<List<RecipeModel>> _savedRecipesNotifier;
-
-  @override
+ @override
   void initState() {
     super.initState();
     _savedRecipesNotifier = ValueNotifier<List<RecipeModel>>([]);
     _loadSavedRecipes();
   }
-
-  @override
+ @override
   void dispose() {
     _savedRecipesNotifier.dispose();
     super.dispose();
   }
-
-  Widget build(BuildContext context) {
+ Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 250, 226, 6),
         title: Text('MY RECIPES',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
         actions: [
+          IconButton(onPressed: (){
+          _navigateToSearchPage();
+          }, icon: Icon(Icons.search),),
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ScreenAddRecipe()),
-              );
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => ScreenAddRecipe()),);
             },
             icon: Icon(Icons.add),
-          )
-        ],
+          )],
       ),
       body: ValueListenableBuilder<Box<RecipeModel>>(
         valueListenable: Boxes.getData().listenable(),
-        builder: (context, box, _) {var recipe=box.values.toList().cast<RecipeModel>();
+        builder: (context, box, _) {
+          var recipe=box.values.toList().cast<RecipeModel>();
+        allRecipes = recipe;
           return recipe.isNotEmpty
               ? GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -69,16 +67,14 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
                   itemBuilder: (context, index) {
                     return _buildRecipeContainer(recipe[index]);
                   },
-                )
-              : Center(
+                ): Center(
                   child: Text('No Recipes'),
                 );
-        },
-      ),
-    );
-  }
-
-  Widget _buildRecipeContainer(RecipeModel recipe) {
+              },
+         ),
+       );
+       }
+        Widget _buildRecipeContainer(RecipeModel recipe) {
     return GestureDetector(
       onTap: () {
         showRecipeDetails(recipe);
@@ -91,8 +87,7 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
                 ? DecorationImage(
                     image: FileImage(File(recipe.image.toString())),
                     fit: BoxFit.cover,
-                  )
-                : null,
+                  ): null,
           ),
           child: Stack(
             children: [
@@ -120,9 +115,7 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16.0,
-                              ),
-                            ),
-                          ),
+                            ),) ),
                         ),
                         IconButton(
                           onPressed: () {
@@ -135,24 +128,16 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
                           icon: Icon(
                             Icons.edit,
                             color: Colors.white,
-                          ),
-                        ),
+                          ), ),
                         IconButton(
                           onPressed: () {
-                            
-                            deleteRecipe(recipe);
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.white,
+                             deleteRecipe(recipe);
+                                  },
+                          icon: Icon( Icons.delete,color: Colors.white,
                           ),
-                        ),
-                      ],
+                        ),],
                     ),
-                  ),
-                ),
-              ),
-            ],
+                  ), ), ),],
           ),
         ),
       ),
@@ -173,8 +158,7 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
     String description1,
     String nutrition1,
     String image1,
-    String category1,
-                      ) async {
+    String category1, ) async {
                         titleController.text = title1.toString();
                         preparationTimeController.text = preparationTime1.toString();
                         cookingTimeController.text = cookingTime1.toString();
@@ -185,15 +169,17 @@ class _ScreenRecipeState extends State<ScreenRecipe> {
                         category = category1.toString();
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenEditRecipe(UpdateModel: UpdateModel,)));
                       }
-
-  Future<void> _loadSavedRecipes() async {
-    try {
+Future<void> _loadSavedRecipes() async {
       final box = await Hive.openBox<RecipeModel>('items');
       List<RecipeModel> recipes = box.values.toList();
 
       _savedRecipesNotifier.value = recipes;
-    } catch (e) {
-      print('Error loading saved recipes: $e');
     }
+   void _navigateToSearchPage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ScreenSearch(allRecipes: allRecipes),
+      ),
+    );
   }
-}
+  }
