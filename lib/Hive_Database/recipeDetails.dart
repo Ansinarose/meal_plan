@@ -13,7 +13,7 @@ class ScreenRecipeDetails extends StatefulWidget {
 
 class _ScreenRecipeDetailsState extends State<ScreenRecipeDetails> {
   final TextStyle _textStyle = TextStyle(fontSize: 16,fontWeight: FontWeight.bold);
-  final EdgeInsets _padding = EdgeInsets.all(20);
+  final EdgeInsets _padding = EdgeInsets.all(8);
 
   @override
   Widget build(BuildContext context) {

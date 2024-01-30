@@ -7,11 +7,9 @@ import 'package:meal_plan/Hive_Database/RecipeModel.dart';
 import 'package:meal_plan/Hive_Database/recipe.dart';
 class ScreenAddRecipe extends StatefulWidget {
   const ScreenAddRecipe({super.key});
-
-  @override
+ @override
   State<ScreenAddRecipe> createState() => _ScreenAddRecipeState();
 }
-
 class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
   final _formKey = GlobalKey<FormState>();
   String? category;
@@ -24,19 +22,16 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
   TextEditingController nutritionController = TextEditingController();
   TextEditingController imageController = TextEditingController();
 
-
   Future<void> _pickImage(ImageSource source) async {
   final pickedFile = await ImagePicker().pickImage(source: source);
-
-    setState(() {
+     setState(() {
       if (pickedFile != null) {
         image = File(pickedFile.path);
         imageController.text = pickedFile.path;
       }
     });
   }
-  
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -72,8 +67,7 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
                         decoration: InputDecoration(
                             labelText: 'Preparation Time',
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
+                                borderRadius: BorderRadius.circular(5)))),
                     ),
                   ),
                   SizedBox(width: 8),
@@ -87,8 +81,7 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
-                    ),
-                  ),
+                    ),),
                 ],
               ),
               Padding(
@@ -115,22 +108,21 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
+                child: TextFormField(maxLines: 3,
                   controller: ingredientsController,
                   decoration: InputDecoration(
                     labelText: 'Ingredients',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
-                  ),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 ),
               ),
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  maxLines: 2,
                   controller: descriptionController,
                   decoration: InputDecoration(
                     labelText: 'Description',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
-                  ),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)) ),
                 ),
               ),
               Padding(
@@ -139,8 +131,7 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
                   controller: nutritionController,
                   decoration: InputDecoration(
                     labelText: 'Nutrition',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
-                  ),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 ),
               ),
               SizedBox(height: 10,),
@@ -220,31 +211,23 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
                           ),
                         );
                   }
-                
-               
-                print('added');
                  },
                   style: ElevatedButton.styleFrom(
                   backgroundColor:Color.fromARGB(255, 250, 226, 6) ,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // Adjust the radius as needed
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
-                  
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text('ADD',
                                  style: TextStyle(color: Colors.black),),
-                  )),
-               )
-            ],
-          ),
-        ),
+                  )), )
+            ],),),
       ),
     );
   } _saveRecipeToDatabase() async {
-   
-    var recipe = RecipeModel(
+   var recipe = RecipeModel(
       title: titleController.text.toString(),
       preparationTime: preparationTimeController.text.toString(),
       cookingTime: cookingTimeController.text.toString(),
@@ -252,16 +235,10 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
       ingredients: ingredientsController.text.toString(),
       description: descriptionController.text.toString(),
       nutrition: nutritionController.text.toString(),
-      image: imageController.text.toString(),
-      //key: 0,
-    );
+      image: imageController.text.toString(),);
     var  box = await Hive.openBox<RecipeModel>('items');
     await box.add(recipe);
-    // Navigator.of(context).pushReplacement(
-    //   MaterialPageRoute(builder: (context) => ScreenRecipe()),
-    // );
-   Navigator.of(context).pop();
+    Navigator.of(context).pop();
   }
-  
-}
+  }
   
