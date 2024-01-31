@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_plan/User_interaction/carousalPage.dart';
-import 'package:meal_plan/User_interaction/userLogin.dart';
+import 'package:meal_plan/user_Interaction/carousalPage.dart';
+import 'package:meal_plan/user_Interaction/userLogin.dart';
 
 class ScreenSkip extends StatelessWidget {
   const ScreenSkip({super.key});

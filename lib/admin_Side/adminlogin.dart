@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meal_plan/Admin%20side/days.dart';
-import 'package:meal_plan/Admin%20side/home.dart';
-import 'package:meal_plan/User_interaction/main.dart';
+import 'package:meal_plan/admin_Side/days.dart';
+import 'package:meal_plan/admin_Side/home.dart';
+import 'package:meal_plan/user_Interaction/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenAdminLogin extends StatefulWidget {

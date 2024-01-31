@@ -1,8 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:meal_plan/Database_Connection/db_helper.dart';
-import 'package:meal_plan/User_interaction/calender.dart';
+import 'package:meal_plan/database_Connection/db_helper.dart';
+import 'package:meal_plan/user_Interaction/calender.dart';
 import 'package:meal_plan/evaluation/evaluationModel.dart';
 import 'package:intl/intl.dart'; // Import the date formatting package
 class ScreenScore extends StatelessWidget {

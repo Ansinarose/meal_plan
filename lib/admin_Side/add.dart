@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meal_plan/Admin%20side/home.dart';
-import 'package:meal_plan/Database_Connection/db_helper.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
+import 'package:meal_plan/admin_Side/home.dart';
+import 'package:meal_plan/database_Connection/db_helper.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
 
 
 class ScreenAdd extends StatefulWidget {

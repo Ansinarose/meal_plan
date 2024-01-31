@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_plan/Hive_Database/RecipeModel.dart';
-import 'package:meal_plan/User_interaction/splash.dart';
+import 'package:meal_plan/user_Interaction/splash.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';

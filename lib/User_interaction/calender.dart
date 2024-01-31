@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:meal_plan/Admin%20side/adminlogin.dart';
-import 'package:meal_plan/Database_Connection/db_helper.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
+import 'package:meal_plan/admin_Side/adminlogin.dart';
+import 'package:meal_plan/database_Connection/db_helper.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
 import 'package:meal_plan/Hive_Database/recipe.dart';
-import 'package:meal_plan/User_interaction/about.dart';
-import 'package:meal_plan/User_interaction/carousalPage.dart';
-import 'package:meal_plan/User_interaction/privacyPolicy.dart';
-import 'package:meal_plan/User_interaction/week.dart';
+import 'package:meal_plan/user_Interaction/about.dart';
+import 'package:meal_plan/user_Interaction/carousalPage.dart';
+import 'package:meal_plan/user_Interaction/privacyPolicy.dart';
+import 'package:meal_plan/user_Interaction/week.dart';
 import 'package:meal_plan/evaluation/evaluation.dart';
 import 'package:meal_plan/feedback/feedback.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -123,7 +123,8 @@ class _screencalenderState extends State<ScreenCalender> {
              shape: BoxShape.circle),
              todayDecoration: BoxDecoration(
                color: Colors.black,
-              shape: BoxShape.circle)  
+              shape: BoxShape.circle),
+              selectedTextStyle: TextStyle(color: Colors.black), 
                   ),
               headerStyle: HeaderStyle(
               formatButtonVisible: false,
@@ -145,19 +146,33 @@ class _screencalenderState extends State<ScreenCalender> {
           child: Text('Open Feedback',
           style: TextStyle(color: Colors.black),),
         ),
-        SizedBox(height: 20),
-        TextButton(
-          onPressed: ()  {
-            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return ScreenWeek();
-            }));
-          }, 
-           child: Padding(
-            padding: const EdgeInsets.only(top:50.0),
-            child: Text('Lets start...',
-            style: TextStyle(color: Colors.black),),
-          ),
-          ),
+        Padding(
+  padding: const EdgeInsets.only(top: 40.0),
+  child: OutlinedButton(
+    onPressed: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+        return ScreenWeek();
+      }));
+    },
+    style: OutlinedButton.styleFrom(
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+      side: BorderSide(color: Colors.black),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0), 
+      ),
+      backgroundColor: Color.fromARGB(255, 250, 226, 6),
+    ),
+    child: Text(
+      'Let\'s start...',
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 18.0,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+)
+
       ],
       ); }
   void _showNoteDialog(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_plan/User_interaction/about.dart';
-import 'package:meal_plan/User_interaction/skip.dart';
+import 'package:meal_plan/user_Interaction/about.dart';
+import 'package:meal_plan/user_Interaction/skip.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenHome extends StatefulWidget {

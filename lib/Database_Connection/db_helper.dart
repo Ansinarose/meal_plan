@@ -1,7 +1,7 @@
 import 'package:meal_plan/evaluation/evaluationModel.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
 
 class DatabaseHelper {
   static const _databaseName = 'food_items.db';
@@ -150,9 +150,6 @@ Future<int> insertEvaluationResult(String statement, String score, String date) 
       );
     });
   }
-
-  
-
 }
 
 

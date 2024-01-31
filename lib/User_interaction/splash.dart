@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:meal_plan/User_interaction/skip.dart';
-import 'package:meal_plan/User_interaction/userLogin.dart';
+import 'package:meal_plan/user_Interaction/skip.dart';
+import 'package:meal_plan/user_Interaction/userLogin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenSplash extends StatefulWidget {

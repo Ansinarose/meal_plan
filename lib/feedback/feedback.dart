@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:meal_plan/Database_Connection/db_helper.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
+import 'package:meal_plan/database_Connection/db_helper.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
 import 'package:intl/intl.dart';
 
 class ScreenFeedback extends StatefulWidget {

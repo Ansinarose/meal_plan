@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
 import 'package:meal_plan/Hive_Database/RecipeModel.dart';
 
 class ScreenRecipeDetails extends StatefulWidget {

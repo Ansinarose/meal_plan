@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:meal_plan/evaluation/evaluation.dart';
-import 'package:meal_plan/Database_Connection/db_helper.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
+import 'package:meal_plan/database_Connection/db_helper.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
 
 class ScreenUserMenu extends StatefulWidget {
   final String day;

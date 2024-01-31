@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_plan/User_interaction/userMenu.dart';
+import 'package:meal_plan/user_Interaction/userMenu.dart';
 
 class ScreenWeek extends StatelessWidget {
   const ScreenWeek({Key? key}) : super(key: key);

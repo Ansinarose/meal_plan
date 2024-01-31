@@ -2,9 +2,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:meal_plan/Database_Connection/db_helper.dart';
-import 'package:meal_plan/Database_Connection/db_modelClass.dart';
-import 'package:meal_plan/User_interaction/calender.dart';
+import 'package:meal_plan/database_Connection/db_helper.dart';
+import 'package:meal_plan/database_Connection/db_modelClass.dart';
+import 'package:meal_plan/user_Interaction/calender.dart';
 
 class ScreenCarousel extends StatefulWidget {
   const ScreenCarousel({Key? key}) : super(key: key);
