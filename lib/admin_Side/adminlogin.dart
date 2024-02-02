@@ -23,13 +23,13 @@ class _ScreenAdminLogin extends State<ScreenAdminLogin> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 250, 226, 6),
       ),
-      body: Center(
-        child: Container(
+      body: SingleChildScrollView(
+        child: Container(height: 800,
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('images/about.jpg'),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Padding(
@@ -48,14 +48,14 @@ class _ScreenAdminLogin extends State<ScreenAdminLogin> {
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        labelText: 'User Name',
+                        labelText: 'Name',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Enter the Username';
+                          return 'Enter the Name';
                         }
                         return null;
                       },
@@ -74,7 +74,7 @@ class _ScreenAdminLogin extends State<ScreenAdminLogin> {
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        labelText: 'Password',
+                        labelText: 'Re enter Name',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -93,14 +93,14 @@ class _ScreenAdminLogin extends State<ScreenAdminLogin> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Enter the Password';
+                          return 'Re Enter the name';
                         }
                         return null;
                       },
                     ),
                   ),
                   SizedBox(height: 20),
-                  ElevatedButton(
+                  OutlinedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 250, 226, 6),
                     ),
@@ -143,10 +143,11 @@ class _ScreenAdminLogin extends State<ScreenAdminLogin> {
     final Username = UsernameTextController.text;
     final Password = _passwordController.text;
 
-    String User = '1';
-    String Pass = '1';
+    // String User = 'ANSINA';
+    // String Pass = '123';
 
-    if (Username == User && Password == Pass) {
+    // if (Username == User && Password == Pass) {
+      if(UsernameTextController.text == _passwordController.text){
       final SharedPrefs = await SharedPreferences.getInstance();
       await SharedPrefs.setBool(SAVE_KEY_NAME, true);
        Navigator.of(context).pushReplacement(

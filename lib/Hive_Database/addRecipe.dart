@@ -35,6 +35,9 @@ class _ScreenAddRecipeState extends State<ScreenAddRecipe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> ScreenRecipe()));
+        }, icon: Icon(Icons.arrow_back)),
         backgroundColor: Color.fromARGB(255, 250, 226, 6),
       ),
       body: SingleChildScrollView(

@@ -15,32 +15,15 @@ class ScreenSkip extends StatelessWidget {
           fit: BoxFit.cover)
         ),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
+          // 
           children: [Padding(
-            padding: const EdgeInsets.only(top:620.0,),
+            padding: const EdgeInsets.only(top:630.0,left: 220),
             child: TextButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx){return ScreenCarousel();}));
               },
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left:30.0),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop(MaterialPageRoute(builder: (ctx){return ScreenHome();}));
-                      },
-                      child: Text('Back',
-                      style: TextStyle(fontSize: 18),),
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Text('Skip...',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),),
-                ],
-              ),
+              child: Text('Skip...',
+              style: TextStyle(fontSize: 22),),
             ),
           )],
         ),

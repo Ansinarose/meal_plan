@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meal_plan/admin_Side/home.dart';
 import 'package:meal_plan/database_Connection/db_helper.dart';
 import 'package:meal_plan/database_Connection/db_modelClass.dart';
+import 'package:meal_plan/user_Interaction/userLogin.dart';
 class ScreenEdit extends StatefulWidget {
   final MealModel meal;
   const ScreenEdit({required this.meal});
@@ -40,7 +41,9 @@ class _ScreenEditState extends State<ScreenEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 250, 226, 6),)  ,
+        backgroundColor: Color.fromARGB(255, 250, 226, 6),
+        leading: IconButton(onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ScreenAdHome()));}, icon: Icon(Icons.arrow_back)),) ,
        body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(15.0),

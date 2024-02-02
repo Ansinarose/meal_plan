@@ -33,9 +33,11 @@ class _screencalenderState extends State<ScreenCalender> {
        }, icon: Icon( Icons.arrow_back)),
         actions: [IconButton(onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ScreenRecipe()));
-        }, icon: Tooltip(
-          message: 'Add recipe',
-          child: Icon(Icons.add),)),
+        }, 
+        icon: Icon(Icons.add)
+          
+          ),
+    
         Padding(
           padding: const EdgeInsets.only(left:10.0),
           child: PopupMenuButton(
@@ -98,7 +100,7 @@ class _screencalenderState extends State<ScreenCalender> {
                     child: TextButton(onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (ctx){return ScreenAdminLogin();}));
                     },
-                      child: Text('Admin Use',
+                      child: Text('My Diet plans',
                       style: TextStyle(color: Colors.black),)), ),
                 ],  )
               ),],
